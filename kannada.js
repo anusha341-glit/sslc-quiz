@@ -1,11 +1,29 @@
+// --- ANTI-COPY & MONITORING START ---
+// Disables right-click
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Disables keyboard shortcuts for copying/inspecting
+document.onkeydown = function(e) {
+    if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 73)) {
+        return false;
+    }
+};
+
+// Stops copy events and shows a message
+document.addEventListener('copy', (event) => {
+    alert("No copying! Trust your memory to reach 620/625! 💪");
+    event.preventDefault();
+});
+// --- ANTI-COPY & MONITORING END ---
+
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const nextButton = document.getElementById('next-btn');
 const timerElement = document.getElementById('timer');
 
 let currentQuestionIndex = 0;
-let score = 0; // ಅಂಕಗಳನ್ನು ಉಳಿಸಲು
-let timeLeft = 60;
+let score = 0; 
+let timeLeft = 30; // Reduced to 30s for better exam practice
 let timer;
 
 const questions = [
@@ -463,7 +481,7 @@ const questions = [
 
 function startQuiz() {
     currentQuestionIndex = 0;
-    score = 0; // ಸ್ಕೋರ್ ರೀಸೆಟ್
+    score = 0; 
     nextButton.innerHTML = "ಮುಂದಿನ ಪ್ರಶ್ನೆ (Next)";
     showQuestion();
 }
@@ -471,12 +489,14 @@ function startQuiz() {
 function showQuestion() {
     resetState();
     let currentQuestion = questions[currentQuestionIndex];
-    questionElement.innerText = currentQuestion.question;
+    
+    // Display Question Number + Text
+    questionElement.innerText = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
 
     // --- PROGRESS BAR UPDATE ---
-    const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
-    document.getElementById('progress-bar').style.width = progressPercent + '%';
-    // ---------------------------
+    const progressPercent = ((currentQuestionIndex) / questions.length) * 100;
+    const progressBar = document.getElementById('progress-bar');
+    if(progressBar) progressBar.style.width = progressPercent + '%';
 
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement('button');
@@ -500,16 +520,27 @@ function resetState() {
 }
 
 function startTimer() {
-    timeLeft = 60;
+    timeLeft = 30; // 30 seconds per question is ideal for SSLC speed
     timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
     timer = setInterval(() => {
         timeLeft--;
         timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            handleNextButton(); // ಸಮಯ ಮುಗಿದರೆ ಮುಂದಿನ ಪ್ರಶ್ನೆಗೆ
+            autoSelectWrong(); // New: Mark as wrong if time runs out
         }
     }, 1000);
+}
+
+function autoSelectWrong() {
+    // If time runs out, show the correct answer and move to next
+    Array.from(answerButtonsElement.children).forEach(button => {
+        if (button.dataset.correct === "true") {
+            button.classList.add('correct');
+        }
+        button.disabled = true;
+    });
+    nextButton.classList.remove('hide');
 }
 
 function selectAnswer(e) {
@@ -542,7 +573,12 @@ function handleNextButton() {
 
 function showScore() {
     resetState();
-    questionElement.innerText = `ಅಭಿನಂದನೆಗಳು! ನಿಮ್ಮ ಅಂಕಗಳು: ${score} / ${questions.length}`;
+    // Finish progress bar
+    document.getElementById('progress-bar').style.width = '100%';
+    
+    let message = score > 45 ? "Excellent! Topper score! 🏆" : "Good try! Keep practicing! 📚";
+    questionElement.innerHTML = `ಅಭಿನಂದನೆಗಳು!<br>ನಿಮ್ಮ ಅಂಕಗಳು: ${score} / ${questions.length}<br><small>${message}</small>`;
+    
     nextButton.innerHTML = "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ (Restart)";
     nextButton.classList.remove('hide');
 }
@@ -556,5 +592,3 @@ nextButton.addEventListener('click', () => {
 });
 
 startQuiz();
-
-
