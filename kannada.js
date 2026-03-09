@@ -473,6 +473,11 @@ function showQuestion() {
     let currentQuestion = questions[currentQuestionIndex];
     questionElement.innerText = currentQuestion.question;
 
+    // --- PROGRESS BAR UPDATE ---
+    const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
+    document.getElementById('progress-bar').style.width = progressPercent + '%';
+    // ---------------------------
+
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement('button');
         button.innerText = answer.text;
@@ -551,4 +556,5 @@ nextButton.addEventListener('click', () => {
 });
 
 startQuiz();
+
 
