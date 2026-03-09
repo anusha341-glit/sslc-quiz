@@ -30,10 +30,10 @@ const questions = [
     {
         question: "'ಕನ್ನಡದ ಆಸ್ತಿ' ಎಂದು ಯಾರನ್ನು ಕರೆಯುತ್ತಾರೆ? (2023)",
         answers: [
-            { text: "ಮಾಸ್ತಿ ವೆಂಕಟೇಶ ಅಯ್ಯಂಗಾರ್", correct: true },
             { text: "ಶಿವರಾಮ ಕಾರಂತ", correct: false },
             { text: "ಡಿ.ವಿ.ಜಿ", correct: false },
-            { text: "ಬಿ.ಎಂ. ಶ್ರೀ", correct: false }
+            { text: "ಬಿ.ಎಂ. ಶ್ರೀ", correct: false },
+             { text: "ಮಾಸ್ತಿ ವೆಂಕಟೇಶ ಅಯ್ಯಂಗಾರ್", correct: true }
         ]
     },
     {
@@ -48,8 +48,8 @@ const questions = [
     {
         question: "'ಲಕ್ಷ್ಮೀಶ' ಕವಿಯ ಪ್ರಸಿದ್ಧ ಕೃತಿ ಯಾವುದು? (2024)",
         answers: [
-            { text: "ಜೈಮಿನಿ ಭಾರತ", correct: true },
             { text: "ಗದುಗಿನ ಭಾರತ", correct: false },
+            { text: "ಜೈಮಿನಿ ಭಾರತ", correct: true },
             { text: "ರಾಮಾಯಣ ದರ್ಶನಂ", correct: false },
             { text: "ಚೆನ್ನಬಸವ ಪುರಾಣ", correct: false }
         ]
@@ -66,17 +66,17 @@ const questions = [
     {
         question: "'ಕೈಯಾಸೆ' ಪದವು ಯಾವ ಸಮಾಸಕ್ಕೆ ಉದಾಹರಣೆ? (2024)",
         answers: [
-            { text: "ತತ್ಪುರುಷ ಸಮಾಸ", correct: true },
             { text: "ಅಂಶಿ ಸಮಾಸ", correct: false },
             { text: "ಕರ್ಮಧಾರಯ ಸಮಾಸ", correct: false },
+            { text: "ತತ್ಪುರುಷ ಸಮಾಸ", correct: true },
             { text: "ದ್ವಂದ್ವ ಸಮಾಸ", correct: false }
         ]
     },
     {
         question: "'ವೃಷಭ' ಪದದ ತದ್ಭವ ರೂಪವೇನು? (2023)",
         answers: [
-            { text: "ಬಸವ", correct: true },
             { text: "ಎತ್ತು", correct: false },
+            { text: "ಬಸವ", correct: true },
             { text: "ಕರು", correct: false },
             { text: "ಹೋರಿ", correct: false }
         ]
@@ -84,10 +84,10 @@ const questions = [
     {
         question: "'ಅತಿಬೆಳ್ಳಗೆ' ಪದವು ಯಾವ ವ್ಯಾಕರಣ ಅಂಶಕ್ಕೆ ಸೇರಿದೆ? (2021)",
         answers: [
-            { text: "ದ್ವಿರುಕ್ತಿ", correct: true },
             { text: "ಜೋಡುನುಡಿ", correct: false },
             { text: "ಅನುಕರಣ ವಾಚಕ", correct: false },
-            { text: "ನುಡಿಗಟ್ಟು", correct: false }
+            { text: "ನುಡಿಗಟ್ಟು", correct: false },
+            { text: "ದ್ವಿರುಕ್ತಿ", correct: true }
         ]
     },
     {
@@ -111,17 +111,17 @@ const questions = [
     {
         question: "ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿರುವ ಒಟ್ಟು ಅಕ್ಷರಗಳು ಎಷ್ಟು?",
         answers: [
-            { text: "49", correct: true },
             { text: "50", correct: false },
             { text: "51", correct: false },
+             { text: "49", correct: true },
             { text: "48", correct: false }
         ]
     },
     {
         question: "'ಅಂಗೈ' ಪದವು ಈ ಸಮಾಸಕ್ಕೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಅಂಶಿ ಸಮಾಸ", correct: true },
             { text: "ತತ್ಪುರುಷ", correct: false },
+            { text: "ಅಂಶಿ ಸಮಾಸ", correct: true },
             { text: "ಅವ್ಯಯೀಭಾವ", correct: false },
             { text: "ದ್ವಂದ್ವ", correct: false }
         ]
@@ -129,10 +129,10 @@ const questions = [
     {
         question: "'ಗಜ' ಪದದ ಸಮಾನಾರ್ಥಕ ಪದ ಯಾವುದು?",
         answers: [
-            { text: "ಆನೆ", correct: true },
             { text: "ಕುದುರೆ", correct: false },
             { text: "ಸಿಂಹ", correct: false },
-            { text: "ಹುಲಿ", correct: false }
+            { text: "ಹುಲಿ", correct: false },
+            { text: "ಆನೆ", correct: true }
         ]
     },
     {
@@ -147,9 +147,9 @@ const questions = [
     {
         question: "ಲೋಪ ಸಂಧಿಗೆ ಒಂದು ಉದಾಹರಣೆ ನೀಡಿ:",
         answers: [
-            { text: "ಊರೂರು", correct: true },
             { text: "ಮನೆಗೆ", correct: false },
             { text: "ಗಿಡದ", correct: false },
+             { text: "ಊರೂರು", correct: true },
             { text: "ಹೊಸಗನ್ನಡ", correct: false }
         ]
     },
@@ -165,10 +165,10 @@ const questions = [
     {
         question: "ಷಷ್ಠೀ ವಿಭಕ್ತಿಯ ಪ್ರತ್ಯಯ ಯಾವುದು?",
         answers: [
-            { text: "ಅ", correct: true },
             { text: "ಇಂದ", correct: false },
             { text: "ಅಲ್ಲಿ", correct: false },
-            { text: "ಉ", correct: false }
+            { text: "ಉ", correct: false },
+            { text: "ಅ", correct: true }
         ]
     },
     {
@@ -183,9 +183,9 @@ const questions = [
     {
         question: "'ಹಲಗಲಿ ಬೇಡರು' ಕವಿತೆಯು ಈ ಕಾವ್ಯ ಪ್ರಕಾರಕ್ಕೆ ಸೇರಿದೆ:",
         answers: [
-            { text: "ಲಾವಣಿ", correct: true },
             { text: "ಭಾವಗೀತೆ", correct: false },
             { text: "ವಚನ", correct: false },
+            { text: "ಲಾವಣಿ", correct: true },
             { text: "ರಗಳೆ", correct: false }
         ]
     },
@@ -201,8 +201,8 @@ const questions = [
     {
         question: "'ಕ್ರಿಯಾಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ ಕೊಡಿ:",
         answers: [
-            { text: "ಮೈದೊಳೆ", correct: true },
             { text: "ಹೆಬ್ಬಾಗಿಲು", correct: false },
+            { text: "ಮೈದೊಳೆ", correct: true },
             { text: "ಪಂಚವಟಿ", correct: false },
             { text: "ಗಿಡಗಂಟೆ", correct: false }
         ]
@@ -210,10 +210,10 @@ const questions = [
     {
         question: "'ವಿದ್ಯಾರ್ಥಿ' ಪದವು ಈ ಸಂಧಿಗೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಸವರ್ಣದೀರ್ಘ ಸಂಧಿ", correct: true },
             { text: "ಗುಣ ಸಂಧಿ", correct: false },
             { text: "ವೃದ್ಧಿ ಸಂಧಿ", correct: false },
-            { text: "ಯಣ್ ಸಂಧಿ", correct: false }
+            { text: "ಯಣ್ ಸಂಧಿ", correct: false },
+            { text: "ಸವರ್ಣದೀರ್ಘ ಸಂಧಿ", correct: true }
         ]
     },
     {
@@ -237,8 +237,8 @@ const questions = [
     {
         question: "'ದ್ವಿಗು ಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಪಂಚವಟಿ", correct: true },
             { text: "ಗಿಡಮರ", correct: false },
+            { text: "ಪಂಚವಟಿ", correct: true },
             { text: "ತಲೆನೋವು", correct: false },
             { text: "ಹಿಂಗಾಲು", correct: false }
         ]
@@ -246,10 +246,10 @@ const questions = [
     {
         question: "'ಅಂಕಿತನಾಮ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಕೃಷ್ಣ", correct: true },
             { text: "ವೈದ್ಯ", correct: false },
             { text: "ಪರ್ವತ", correct: false },
-            { text: "ಊರು", correct: false }
+            { text: "ಊರು", correct: false },
+            { text: "ಕೃಷ್ಣ", correct: true }
         ]
     },
     {
@@ -264,17 +264,17 @@ const questions = [
     {
         question: "'ಪಂಪ' ಕವಿಯ ಬಿರುದು ಯಾವುದು?",
         answers: [
-            { text: "ಆದಿಕವಿ", correct: true },
             { text: "ಕವಿಚಕ್ರವರ್ತಿ", correct: false },
             { text: "ಉಭಯಕವಿ", correct: false },
+            { text: "ಆದಿಕವಿ", correct: true },
             { text: "ಶಬ್ದಮಣಿ", correct: false }
         ]
     },
     {
         question: "'ಬೆಟ್ಟದಾವರೆ' ಈ ಸಂಧಿಗೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಆದೇಶ ಸಂಧಿ", correct: true },
             { text: "ಜಶ್ತ್ವ ಸಂಧಿ", correct: false },
+            { text: "ಆದೇಶ ಸಂಧಿ", correct: true },
             { text: "ಲೋಪ ಸಂಧಿ", correct: false },
             { text: "ಆಗಮ ಸಂಧಿ", correct: false }
         ]
@@ -282,10 +282,10 @@ const questions = [
     {
         question: "'ಹಳಗನ್ನಡ'ದ ಪ್ರಥಮ ಕವಿ ಯಾರು?",
         answers: [
-            { text: "ಪಂಪ", correct: true },
             { text: "ಪೊನ್ನ", correct: false },
             { text: "ರನ್ನ", correct: false },
-            { text: "ಜನ್ನ", correct: false }
+            { text: "ಜನ್ನ", correct: false },
+            { text: "ಪಂಪ", correct: true }
         ]
     },
     {
@@ -300,27 +300,27 @@ const questions = [
     {
         question: "'ಸಪ್ತಮಿ' ವಿಭಕ್ತಿಯ ಪ್ರತ್ಯಯ ಯಾವುದು?",
         answers: [
-            { text: "ಅಲ್ಲಿ", correct: true },
             { text: "ಅನ್ನು", correct: false },
             { text: "ಇಂದ", correct: false },
+            { text: "ಅಲ್ಲಿ", correct: true },
             { text: "ಅ", correct: false }
         ]
     },
     {
         question: "'ಗುಣ ಸಂಧಿ'ಕ್ಕೆ ಒಂದು ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ದೇವೇಶ್ವರ", correct: true },
             { text: "ವೈದ್ಯ", correct: false },
             { text: "ಬರಗಾಲ", correct: false },
-            { text: "ಹೊಸಗನ್ನಡ", correct: false }
+            { text: "ಹೊಸಗನ್ನಡ", correct: false },
+            { text: "ದೇವೇಶ್ವರ", correct: true },
         ]
     },
     {
         question: "'ಯಣ್ ಸಂಧಿ'ಗೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಪ್ರತ್ಯುತ್ತರ", correct: true },
             { text: "ಶಾಲೆಯಲ್ಲಿ", correct: false },
             { text: "ಗಿಡಮರ", correct: false },
+            { text: "ಪ್ರತ್ಯುತ್ತರ", correct: true },
             { text: "ಬೆಟ್ಟದಾವರೆ", correct: false }
         ]
     },
@@ -336,10 +336,10 @@ const questions = [
     {
         question: "'ಸಂಧಿ' ಎಂದರೆ ಏನು?",
         answers: [
-            { text: "ಅಕ್ಷರಗಳ ಸೇರುವಿಕೆ", correct: true },
             { text: "ಪದಗಳ ಸೇರುವಿಕೆ", correct: false },
             { text: "ಅರ್ಥದ ಸೇರುವಿಕೆ", correct: false },
-            { text: "ವಾಕ್ಯದ ಸೇರುವಿಕೆ", correct: false }
+            { text: "ವಾಕ್ಯದ ಸೇರುವಿಕೆ", correct: false },
+            { text: "ಅಕ್ಷರಗಳ ಸೇರುವಿಕೆ", correct: true }
         ]
     },
     {
@@ -354,8 +354,8 @@ const questions = [
     {
         question: "'ಕುದುರೆಗಳು' ಈ ಪದದಲ್ಲಿರುವ ಪ್ರತ್ಯಯ ಯಾವುದು?",
         answers: [
-            { text: "ಬಹುವಚನ ಪ್ರತ್ಯಯ", correct: true },
             { text: "ಸ್ತ್ರೀಲಿಂಗ ಪ್ರತ್ಯಯ", correct: false },
+            { text: "ಬಹುವಚನ ಪ್ರತ್ಯಯ", correct: true },
             { text: "ಪುಲ್ಲಿಂಗ ಪ್ರತ್ಯಯ", correct: false },
             { text: "ಕಾರಕ ಪ್ರತ್ಯಯ", correct: false }
         ]
@@ -363,10 +363,10 @@ const questions = [
     {
         question: "'ಪರ್ವತ' ಎಂಬುದು ಯಾವ ನಾಮಪದ?",
         answers: [
-            { text: "ರೂಢನಾಮ", correct: true },
             { text: "ಅಂಕಿತನಾಮ", correct: false },
             { text: "ಅನ್ವರ್ಥನಾಮ", correct: false },
-            { text: "ಭಾವನಾಮ", correct: false }
+            { text: "ಭಾವನಾಮ", correct: false },
+            { text: "ರೂಢನಾಮ", correct: true }
         ]
     },
     {
@@ -381,17 +381,17 @@ const questions = [
     {
         question: "'ದ್ವಿರುಕ್ತಿ'ಗೆ ಒಂದು ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಬೇಗಬೇಗ", correct: true },
             { text: "ಹಾಲುಜೇನು", correct: false },
             { text: "ತಲೆನೋವು", correct: false },
+            { text: "ಬೇಗಬೇಗ", correct: true },
             { text: "ಬರಬರುತ್ತಾ", correct: false }
         ]
     },
     {
         question: "'ತತ್ಪುರುಷ ಸಮಾಸ'ದಲ್ಲಿ ಯಾವ ಪದದ ಅರ್ಥ ಮುಖ್ಯವಾಗಿರುತ್ತದೆ?",
         answers: [
-            { text: "ಉತ್ತರ ಪದದ", correct: true },
             { text: "ಪೂರ್ವ ಪದದ", correct: false },
+            { text: "ಉತ್ತರ ಪದದ", correct: true },
             { text: "ಎರಡೂ ಪದದ", correct: false },
             { text: "ಅನ್ಯ ಪದದ", correct: false }
         ]
@@ -399,10 +399,10 @@ const questions = [
     {
         question: "'ಬಹುತೇಕ' ಪದವು ಈ ಸಂಧಿಗೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ವೃದ್ಧಿ ಸಂಧಿ", correct: true },
             { text: "ಗುಣ ಸಂಧಿ", correct: false },
             { text: "ಯಣ್ ಸಂಧಿ", correct: false },
-            { text: "ಲೋಪ ಸಂಧಿ", correct: false }
+            { text: "ಲೋಪ ಸಂಧಿ", correct: false },
+            { text: "ವೃದ್ಧಿ ಸಂಧಿ", correct: true }
         ]
     },
     {
@@ -417,17 +417,17 @@ const questions = [
     {
         question: "'ಜಶ್ತ್ವ ಸಂಧಿ'ಗೆ ಉದಾಹರಣೆ ಯಾವುದು?",
         answers: [
-            { text: "ವಾಗ್ದೇವಿ", correct: true },
             { text: "ಸತ್ಕಾರ", correct: false },
             { text: "ಲೋಕೈಕ", correct: false },
+            { text: "ವಾಗ್ದೇವಿ", correct: true },
             { text: "ಉತ್ತರ", correct: false }
         ]
     },
     {
         question: "'ಬಹುವ್ರೀಹಿ ಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
         answers: [
-            { text: "ಮುಕ್ಕಣ್ಣ", correct: true },
             { text: "ಪಂಚವಟಿ", correct: false },
+            { text: "ಮುಕ್ಕಣ್ಣ", correct: true },
             { text: "ಕೆರೆಕಟ್ಟೆ", correct: false },
             { text: "ಹಿಂಗಾಲು", correct: false }
         ]
@@ -551,3 +551,4 @@ nextButton.addEventListener('click', () => {
 });
 
 startQuiz();
+
