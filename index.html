@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSLC 2026</title>
+    <title>SSLC  2026</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* This makes the menu buttons look extra nice */
+        /* Special styles for the Menu Buttons */
         .btn-grid button {
             height: 100px;
             font-weight: bold;
             font-size: 1.1rem;
-            border: 1px solid #ddd;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            border: 2px solid #3498db;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-grid button:hover {
+            transform: scale(1.05);
+            background-color: white !important;
+            color: #3498db;
         }
     </style>
 </head>
 <body>
     <div class="quiz-container">
         <h1>SSLC ಪರೀಕ್ಷಾ ಸಿದ್ಧತೆ - 2026</h1>
-        <p style="text-align:center;">ವಿಷಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ (Select Subject):</p>
+        <p style="text-align:center; color: #7f8c8d;">ವಿಷಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ (Select Subject):</p>
         
         <div class="btn-grid">
             <button onclick="location.href='kannada.html'" style="background:#e3f2fd;">ಕನ್ನಡ (1st Lang)</button>
