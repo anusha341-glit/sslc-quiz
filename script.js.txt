@@ -9,22 +9,456 @@ let timer;
 
 // 1. Your Question Bank (Add real SSLC questions here)
 const questions = [
+    // --- Literature & Authors ---
     {
-        question: "ಆಮ್ಲಗಳು ಲಿಟ್ಮಸ್ ಕಾಗದವನ್ನು ಯಾವ ಬಣ್ಣಕ್ಕೆ ಬದಲಾಯಿಸುತ್ತವೆ?",
+        question: "'ಶಬರಿ' ಪಾಠದ ಲೇಖಕರು ಯಾರು? (2023)",
         answers: [
-            { text: "ಕೆಂಪು ಬಣ್ಣದಿಂದ ನೀಲಿ", correct: false },
-            { text: "ನೀಲಿ ಬಣ್ಣದಿಂದ ಕೆಂಪು", correct: true },
-            { text: "ಹಳದಿ ಬಣ್ಣಕ್ಕೆ", correct: false },
-            { text: "ಬಣ್ಣ ಬದಲಾಗುವುದಿಲ್ಲ", correct: false }
+            { text: "ಕುವೆಂಪು", correct: false },
+            { text: "ಪು.ತಿ. ನರಸಿಂಹಾಚಾರ್", correct: true },
+            { text: "ಜಿ.ಎಸ್. ಶಿವರುದ್ರಪ್ಪ", correct: false },
+            { text: "ದ.ರಾ. ಬೇಂದ್ರೆ", correct: false }
         ]
     },
     {
-        question: "ವೃತ್ತದ ವಿಸ್ತೀರ್ಣವನ್ನು ಕಂಡುಹಿಡಿಯುವ ಸೂತ್ರ ಯಾವುದು?",
+        question: "'ಹಕ್ಕಿ ಹಾರುತಿದೆ ನೋಡಿದಿರಾ' ಕವನದ ಕವಿ ಯಾರು? (Repeated)",
         answers: [
-            { text: "2πr", correct: false },
-            { text: "πr²", correct: true },
-            { text: "1/2 bh", correct: false },
-            { text: "l × b", correct: false }
+            { text: "ದ.ರಾ. ಬೇಂದ್ರೆ", correct: true },
+            { text: "ಚನ್ನವೀರ ಕಣವಿ", correct: false },
+            { text: "ಕುವೆಂಪು", correct: false },
+            { text: "ಸಿದ್ದಲಿಂಗಯ್ಯ", correct: false }
+        ]
+    },
+    {
+        question: "'ಕನ್ನಡದ ಆಸ್ತಿ' ಎಂದು ಯಾರನ್ನು ಕರೆಯುತ್ತಾರೆ? (2023)",
+        answers: [
+            { text: "ಮಾಸ್ತಿ ವೆಂಕಟೇಶ ಅಯ್ಯಂಗಾರ್", correct: true },
+            { text: "ಶಿವರಾಮ ಕಾರಂತ", correct: false },
+            { text: "ಡಿ.ವಿ.ಜಿ", correct: false },
+            { text: "ಬಿ.ಎಂ. ಶ್ರೀ", correct: false }
+        ]
+    },
+    {
+        question: "'ಷಟ್ಪದಿ'ಯ ಬ್ರಹ್ಮ ಎಂದು ಯಾರನ್ನು ಕರೆಯುತ್ತಾರೆ? (Most Imp)",
+        answers: [
+            { text: "ಪಂಪ", correct: false },
+            { text: "ಕುಮಾರವ್ಯಾಸ", correct: false },
+            { text: "ರಾಘವಾಂಕ", correct: true },
+            { text: "ಲಕ್ಷ್ಮೀಶ", correct: false }
+        ]
+    },
+    {
+        question: "'ಲಕ್ಷ್ಮೀಶ' ಕವಿಯ ಪ್ರಸಿದ್ಧ ಕೃತಿ ಯಾವುದು? (2024)",
+        answers: [
+            { text: "ಜೈಮಿನಿ ಭಾರತ", correct: true },
+            { text: "ಗದುಗಿನ ಭಾರತ", correct: false },
+            { text: "ರಾಮಾಯಣ ದರ್ಶನಂ", correct: false },
+            { text: "ಚೆನ್ನಬಸವ ಪುರಾಣ", correct: false }
+        ]
+    },
+    // --- Grammar (ವ್ಯಾಕರಣ) ---
+    {
+        question: "'ಲಗಾಮು' ಎಂಬುದು ಯಾವ ಭಾಷೆಯ ಪದ? (2022)",
+        answers: [
+            { text: "ಪಾರ್ಸಿ", correct: true },
+            { text: "ಹಿಂದೂಸ್ತಾನಿ", correct: false },
+            { text: "ಇಂಗ್ಲಿಷ್", correct: false },
+            { text: "ಪೋರ್ಚುಗೀಸ್", correct: false }
+        ]
+    },
+    {
+        question: "'ಕೈಯಾಸೆ' ಪದವು ಯಾವ ಸಮಾಸಕ್ಕೆ ಉದಾಹರಣೆ? (2024)",
+        answers: [
+            { text: "ತತ್ಪುರುಷ ಸಮಾಸ", correct: true },
+            { text: "ಅಂಶಿ ಸಮಾಸ", correct: false },
+            { text: "ಕರ್ಮಧಾರಯ ಸಮಾಸ", correct: false },
+            { text: "ದ್ವಂದ್ವ ಸಮಾಸ", correct: false }
+        ]
+    },
+    {
+        question: "'ವೃಷಭ' ಪದದ ತದ್ಭವ ರೂಪವೇನು? (2023)",
+        answers: [
+            { text: "ಬಸವ", correct: true },
+            { text: "ಎತ್ತು", correct: false },
+            { text: "ಕರು", correct: false },
+            { text: "ಹೋರಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಅತಿಬೆಳ್ಳಗೆ' ಪದವು ಯಾವ ವ್ಯಾಕರಣ ಅಂಶಕ್ಕೆ ಸೇರಿದೆ? (2021)",
+        answers: [
+            { text: "ದ್ವಿರುಕ್ತಿ", correct: true },
+            { text: "ಜೋಡುನುಡಿ", correct: false },
+            { text: "ಅನುಕರಣ ವಾಚಕ", correct: false },
+            { text: "ನುಡಿಗಟ್ಟು", correct: false }
+        ]
+    },
+    {
+        question: "'ಮುಖಕಮಲ' ಎಂಬುದು ಈ ಅಲಂಕಾರಕ್ಕೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಉಪಮಾಲಂಕಾರ", correct: false },
+            { text: "ರೂಪಕಾಲಂಕಾರ", correct: true },
+            { text: "ಉತ್ಪ್ರೇಕ್ಷಾಲಂಕಾರ", correct: false },
+            { text: "ದೃಷ್ಟಾಂತಾಲಂಕಾರ", correct: false }
+        ]
+    },
+    {
+        question: "'ಹೊಸಗನ್ನಡ' ಪದವು ಯಾವ ಸಮಾಸ? (2024)",
+        answers: [
+            { text: "ಕರ್ಮಧಾರಯ", correct: true },
+            { text: "ಗಮಕ", correct: false },
+            { text: "ದ್ವಿಗು", correct: false },
+            { text: "ಬಹುವ್ರೀಹಿ", correct: false }
+        ]
+    },
+    {
+        question: "ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿರುವ ಒಟ್ಟು ಅಕ್ಷರಗಳು ಎಷ್ಟು?",
+        answers: [
+            { text: "49", correct: true },
+            { text: "50", correct: false },
+            { text: "51", correct: false },
+            { text: "48", correct: false }
+        ]
+    },
+    {
+        question: "'ಅಂಗೈ' ಪದವು ಈ ಸಮಾಸಕ್ಕೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಅಂಶಿ ಸಮಾಸ", correct: true },
+            { text: "ತತ್ಪುರುಷ", correct: false },
+            { text: "ಅವ್ಯಯೀಭಾವ", correct: false },
+            { text: "ದ್ವಂದ್ವ", correct: false }
+        ]
+    },
+    {
+        question: "'ಗಜ' ಪದದ ಸಮಾನಾರ್ಥಕ ಪದ ಯಾವುದು?",
+        answers: [
+            { text: "ಆನೆ", correct: true },
+            { text: "ಕುದುರೆ", correct: false },
+            { text: "ಸಿಂಹ", correct: false },
+            { text: "ಹುಲಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಕವಿರಾಜಮಾರ್ಗ' ಗ್ರಂಥದ ಕರ್ತೃ ಯಾರು?",
+        answers: [
+            { text: "ಶ್ರೀವಿಜಯ", correct: true },
+            { text: "ಪಂಪ", correct: false },
+            { text: "ರನ್ನ", correct: false },
+            { text: "ಪೊನ್ನ", correct: false }
+        ]
+    },
+    {
+        question: "ಲೋಪ ಸಂಧಿಗೆ ಒಂದು ಉದಾಹರಣೆ ನೀಡಿ:",
+        answers: [
+            { text: "ಊರೂರು", correct: true },
+            { text: "ಮನೆಗೆ", correct: false },
+            { text: "ಗಿಡದ", correct: false },
+            { text: "ಹೊಸಗನ್ನಡ", correct: false }
+        ]
+    },
+    {
+        question: "'ಜೋಡುನುಡಿ'ಗೆ ಉದಾಹರಣೆ ಯಾವುದು?",
+        answers: [
+            { text: "ಗೆಲುವಿನ", correct: false },
+            { text: "ಗಿಡಗಂಟೆ", correct: true },
+            { text: "ಅತಿಬೆಳ್ಳಗೆ", correct: false },
+            { text: "ಬರಬರುತ್ತಾ", correct: false }
+        ]
+    },
+    {
+        question: "ಷಷ್ಠೀ ವಿಭಕ್ತಿಯ ಪ್ರತ್ಯಯ ಯಾವುದು?",
+        answers: [
+            { text: "ಅ", correct: true },
+            { text: "ಇಂದ", correct: false },
+            { text: "ಅಲ್ಲಿ", correct: false },
+            { text: "ಉ", correct: false }
+        ]
+    },
+    {
+        question: "ಕನ್ನಡದ ಪ್ರಥಮ ನಾಟಕ 'ಮಿತ್ರವಿಂದ ಗೋವಿಂದ'ದ ಕರ್ತೃ ಯಾರು?",
+        answers: [
+            { text: "ಸಿಂಗರಾರ್ಯ", correct: true },
+            { text: "ಲಕ್ಷ್ಮೀಶ", correct: false },
+            { text: "ಪಂಪ", correct: false },
+            { text: "ರನ್ನ", correct: false }
+        ]
+    },
+    {
+        question: "'ಹಲಗಲಿ ಬೇಡರು' ಕವಿತೆಯು ಈ ಕಾವ್ಯ ಪ್ರಕಾರಕ್ಕೆ ಸೇರಿದೆ:",
+        answers: [
+            { text: "ಲಾವಣಿ", correct: true },
+            { text: "ಭಾವಗೀತೆ", correct: false },
+            { text: "ವಚನ", correct: false },
+            { text: "ರಗಳೆ", correct: false }
+        ]
+    },
+    {
+        question: "'ಆಗಮ ಸಂಧಿ'ಗೆ ಉದಾಹರಣೆ ಯಾವುದು?",
+        answers: [
+            { text: "ಮನೆಯನ್ನು", correct: true },
+            { text: "ಊರೂರು", correct: false },
+            { text: "ಬೆಟ್ಟದಾವರೆ", correct: false },
+            { text: "ಕೈಮರ", correct: false }
+        ]
+    },
+    {
+        question: "'ಕ್ರಿಯಾಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ ಕೊಡಿ:",
+        answers: [
+            { text: "ಮೈದೊಳೆ", correct: true },
+            { text: "ಹೆಬ್ಬಾಗಿಲು", correct: false },
+            { text: "ಪಂಚವಟಿ", correct: false },
+            { text: "ಗಿಡಗಂಟೆ", correct: false }
+        ]
+    },
+    {
+        question: "'ವಿದ್ಯಾರ್ಥಿ' ಪದವು ಈ ಸಂಧಿಗೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಸವರ್ಣದೀರ್ಘ ಸಂಧಿ", correct: true },
+            { text: "ಗುಣ ಸಂಧಿ", correct: false },
+            { text: "ವೃದ್ಧಿ ಸಂಧಿ", correct: false },
+            { text: "ಯಣ್ ಸಂಧಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಗಮಕ ಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ ಯಾವುದು?",
+        answers: [
+            { text: "ಆಗಸದಾವರೆ", correct: false },
+            { text: "ಬಿಳಿಯಕುದುರೆ", correct: false },
+            { text: "ಆ ಮಾತು", correct: true },
+            { text: "ಮನೆಗೆಲಸ", correct: false }
+        ]
+    },
+    {
+        question: "'ಅನ್ವರ್ಥನಾಮ'ಕ್ಕೆ ಉದಾಹರಣೆ ಯಾವುದು?",
+        answers: [
+            { text: "ವ್ಯಾಪಾರಿ", correct: true },
+            { text: "ರಾಮ", correct: false },
+            { text: "ಬೆಂಗಳೂರು", correct: false },
+            { text: "ನದೀ", correct: false }
+        ]
+    },
+    {
+        question: "'ದ್ವಿಗು ಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಪಂಚವಟಿ", correct: true },
+            { text: "ಗಿಡಮರ", correct: false },
+            { text: "ತಲೆನೋವು", correct: false },
+            { text: "ಹಿಂಗಾಲು", correct: false }
+        ]
+    },
+    {
+        question: "'ಅಂಕಿತನಾಮ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಕೃಷ್ಣ", correct: true },
+            { text: "ವೈದ್ಯ", correct: false },
+            { text: "ಪರ್ವತ", correct: false },
+            { text: "ಊರು", correct: false }
+        ]
+    },
+    {
+        question: "'ತೃತಿಯಾ' ವಿಭಕ್ತಿಯ ಪ್ರತ್ಯಯ ಯಾವುದು?",
+        answers: [
+            { text: "ಇಂದ", correct: true },
+            { text: "ಅಕ್ಕೆ", correct: false },
+            { text: "ಅನ್ನು", correct: false },
+            { text: "ಅಲ್ಲಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಪಂಪ' ಕವಿಯ ಬಿರುದು ಯಾವುದು?",
+        answers: [
+            { text: "ಆದಿಕವಿ", correct: true },
+            { text: "ಕವಿಚಕ್ರವರ್ತಿ", correct: false },
+            { text: "ಉಭಯಕವಿ", correct: false },
+            { text: "ಶಬ್ದಮಣಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಬೆಟ್ಟದಾವರೆ' ಈ ಸಂಧಿಗೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಆದೇಶ ಸಂಧಿ", correct: true },
+            { text: "ಜಶ್ತ್ವ ಸಂಧಿ", correct: false },
+            { text: "ಲೋಪ ಸಂಧಿ", correct: false },
+            { text: "ಆಗಮ ಸಂಧಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಹಳಗನ್ನಡ'ದ ಪ್ರಥಮ ಕವಿ ಯಾರು?",
+        answers: [
+            { text: "ಪಂಪ", correct: true },
+            { text: "ಪೊನ್ನ", correct: false },
+            { text: "ರನ್ನ", correct: false },
+            { text: "ಜನ್ನ", correct: false }
+        ]
+    },
+    {
+        question: "'ಅನುಕರಣ ವಾಚಕ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಘುಳುಘುಳು", correct: true },
+            { text: "ಬರಬರುತ್ತಾ", correct: false },
+            { text: "ಕೆರೆಕಟ್ಟೆ", correct: false },
+            { text: "ಸಣ್ಣಪುಟ್ಟ", correct: false }
+        ]
+    },
+    {
+        question: "'ಸಪ್ತಮಿ' ವಿಭಕ್ತಿಯ ಪ್ರತ್ಯಯ ಯಾವುದು?",
+        answers: [
+            { text: "ಅಲ್ಲಿ", correct: true },
+            { text: "ಅನ್ನು", correct: false },
+            { text: "ಇಂದ", correct: false },
+            { text: "ಅ", correct: false }
+        ]
+    },
+    {
+        question: "'ಗುಣ ಸಂಧಿ'ಗೆ ಒಂದು ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ದೇವೇಶ್ವರ", correct: true },
+            { text: "ವೈದ್ಯ", correct: false },
+            { text: "ಬರಗಾಲ", correct: false },
+            { text: "ಹೊಸಗನ್ನಡ", correct: false }
+        ]
+    },
+    {
+        question: "'ಯಣ್ ಸಂಧಿ'ಗೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಪ್ರತ್ಯುತ್ತರ", correct: true },
+            { text: "ಶಾಲೆಯಲ್ಲಿ", correct: false },
+            { text: "ಗಿಡಮರ", correct: false },
+            { text: "ಬೆಟ್ಟದಾವರೆ", correct: false }
+        ]
+    },
+    {
+        question: "'ಚತುರ್ಥಿ' ವಿಭಕ್ತಿಯ ಕಾರಕಾರ್ಥ ಯಾವುದು?",
+        answers: [
+            { text: "ಸಂಪ್ರದಾನ", correct: true },
+            { text: "ಕರ್ತೃ", correct: false },
+            { text: "ಕರ್ಮ", correct: false },
+            { text: "ಕರಣ", correct: false }
+        ]
+    },
+    {
+        question: "'ಸಂಧಿ' ಎಂದರೆ ಏನು?",
+        answers: [
+            { text: "ಅಕ್ಷರಗಳ ಸೇರುವಿಕೆ", correct: true },
+            { text: "ಪದಗಳ ಸೇರುವಿಕೆ", correct: false },
+            { text: "ಅರ್ಥದ ಸೇರುವಿಕೆ", correct: false },
+            { text: "ವಾಕ್ಯದ ಸೇರುವಿಕೆ", correct: false }
+        ]
+    },
+    {
+        question: "'ಸಮಾಸ' ಎಂದರೆ ಏನು?",
+        answers: [
+            { text: "ಪದಗಳ ಸೇರುವಿಕೆ", correct: true },
+            { text: "ಅಕ್ಷರಗಳ ಸೇರುವಿಕೆ", correct: false },
+            { text: "ಧಾತುಗಳ ಸೇರುವಿಕೆ", correct: false },
+            { text: "ವಾಚ್ಯಗಳ ಸೇರುವಿಕೆ", correct: false }
+        ]
+    },
+    {
+        question: "'ಕುದುರೆಗಳು' ಈ ಪದದಲ್ಲಿರುವ ಪ್ರತ್ಯಯ ಯಾವುದು?",
+        answers: [
+            { text: "ಬಹುವಚನ ಪ್ರತ್ಯಯ", correct: true },
+            { text: "ಸ್ತ್ರೀಲಿಂಗ ಪ್ರತ್ಯಯ", correct: false },
+            { text: "ಪುಲ್ಲಿಂಗ ಪ್ರತ್ಯಯ", correct: false },
+            { text: "ಕಾರಕ ಪ್ರತ್ಯಯ", correct: false }
+        ]
+    },
+    {
+        question: "'ಪರ್ವತ' ಎಂಬುದು ಯಾವ ನಾಮಪದ?",
+        answers: [
+            { text: "ರೂಢನಾಮ", correct: true },
+            { text: "ಅಂಕಿತನಾಮ", correct: false },
+            { text: "ಅನ್ವರ್ಥನಾಮ", correct: false },
+            { text: "ಭಾವನಾಮ", correct: false }
+        ]
+    },
+    {
+        question: "ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಎಷ್ಟು ವರ್ಗೀಯ ವ್ಯಂಜನಗಳಿವೆ?",
+        answers: [
+            { text: "25", correct: true },
+            { text: "9", correct: false },
+            { text: "34", correct: false },
+            { text: "13", correct: false }
+        ]
+    },
+    {
+        question: "'ದ್ವಿರುಕ್ತಿ'ಗೆ ಒಂದು ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಬೇಗಬೇಗ", correct: true },
+            { text: "ಹಾಲುಜೇನು", correct: false },
+            { text: "ತಲೆನೋವು", correct: false },
+            { text: "ಬರಬರುತ್ತಾ", correct: false }
+        ]
+    },
+    {
+        question: "'ತತ್ಪುರುಷ ಸಮಾಸ'ದಲ್ಲಿ ಯಾವ ಪದದ ಅರ್ಥ ಮುಖ್ಯವಾಗಿರುತ್ತದೆ?",
+        answers: [
+            { text: "ಉತ್ತರ ಪದದ", correct: true },
+            { text: "ಪೂರ್ವ ಪದದ", correct: false },
+            { text: "ಎರಡೂ ಪದದ", correct: false },
+            { text: "ಅನ್ಯ ಪದದ", correct: false }
+        ]
+    },
+    {
+        question: "'ಬಹುತೇಕ' ಪದವು ಈ ಸಂಧಿಗೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ವೃದ್ಧಿ ಸಂಧಿ", correct: true },
+            { text: "ಗುಣ ಸಂಧಿ", correct: false },
+            { text: "ಯಣ್ ಸಂಧಿ", correct: false },
+            { text: "ಲೋಪ ಸಂಧಿ", correct: false }
+        ]
+    },
+    {
+        question: "'ಗುರ್ವಿ' ಪದದ ಪುಲ್ಲಿಂಗ ರೂಪವೇನು?",
+        answers: [
+            { text: "ಗುರು", correct: true },
+            { text: "ಗೌಡ", correct: false },
+            { text: "ರಾಜ", correct: false },
+            { text: "ದೇವ", correct: false }
+        ]
+    },
+    {
+        question: "'ಜಶ್ತ್ವ ಸಂಧಿ'ಗೆ ಉದಾಹರಣೆ ಯಾವುದು?",
+        answers: [
+            { text: "ವಾಗ್ದೇವಿ", correct: true },
+            { text: "ಸತ್ಕಾರ", correct: false },
+            { text: "ಲೋಕೈಕ", correct: false },
+            { text: "ಉತ್ತರ", correct: false }
+        ]
+    },
+    {
+        question: "'ಬಹುವ್ರೀಹಿ ಸಮಾಸ'ಕ್ಕೆ ಉದಾಹರಣೆ:",
+        answers: [
+            { text: "ಮುಕ್ಕಣ್ಣ", correct: true },
+            { text: "ಪಂಚವಟಿ", correct: false },
+            { text: "ಕೆರೆಕಟ್ಟೆ", correct: false },
+            { text: "ಹಿಂಗಾಲು", correct: false }
+        ]
+    },
+    {
+        question: "'ವೃಕ್ಷ' ಪದದ ತದ್ಭವ ರೂಪವೇನು?",
+        answers: [
+            { text: "ಗಿಡ", correct: false },
+            { text: "ಮರ", correct: false },
+            { text: "ಬೆಳವು", correct: false },
+            { text: "ರುಕ್ಕ", correct: true }
+        ]
+    },
+    {
+        question: "ಕನ್ನಡದ ಮೊದಲ ಜ್ಞಾನಪೀಠ ಪ್ರಶಸ್ತಿ ಪುರಸ್ಕೃತರು ಯಾರು?",
+        answers: [
+            { text: "ಕುವೆಂಪು", correct: true },
+            { text: "ಬೇಂದ್ರೆ", correct: false },
+            { text: "ಕಾರಂತ", correct: false },
+            { text: "ಗಿರೀಶ್ ಕಾರ್ನಾಡ್", correct: false }
+        ]
+    },
+    {
+        question: "ಷಟ್ಪದಿಯ ಪ್ರತಿ ಪಾದದ ಅಂತ್ಯದಲ್ಲಿ ಯಾವ ಮಾತ್ರಾಗಣವಿರುತ್ತದೆ?",
+        answers: [
+            { text: "ಯತಿ", correct: false },
+            { text: "ಪಾಸ", correct: false },
+            { text: "ಪ್ರಾಸ", correct: true },
+            { text: "ಲಘು", correct: false }
         ]
     }
 ];
@@ -81,5 +515,6 @@ nextButton.addEventListener('click', () => {
         nextButton.classList.add('hide');
     }
 });
+
 
 startQuiz();
