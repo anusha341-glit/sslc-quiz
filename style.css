@@ -4,7 +4,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .quiz-container {
@@ -16,18 +17,30 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 #timer {
     font-weight: bold;
     color: #e74c3c;
     font-size: 1.2rem;
-    text-align: right;
 }
 
 .btn-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr); /* Better for mobile */
     gap: 15px;
     margin-top: 20px;
+}
+
+@media (min-width: 480px) {
+    .btn-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for computers */
+    }
 }
 
 button {
@@ -41,6 +54,16 @@ button {
 }
 
 button:hover { background-color: #ebf5fb; }
-.correct { background-color: #2ecc71 !important; color: white; }
-.wrong { background-color: #e74c3c !important; color: white; }
+
+.correct { background-color: #2ecc71 !important; color: white; border-color: #27ae60; }
+.wrong { background-color: #e74c3c !important; color: white; border-color: #c0392b; }
+
+.next-btn {
+    background-color: #3498db;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
 .hide { display: none; }
