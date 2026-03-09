@@ -7,6 +7,13 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+
+    /* --- ANTI-COPY START --- */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10+ */
+    user-select: none;         /* Prevent text selection */
+    -webkit-touch-callout: none; /* Prevent long-press on mobile */
+    /* --- ANTI-COPY END --- */
 }
 
 .quiz-container {
