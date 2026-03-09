@@ -67,3 +67,27 @@ button:hover { background-color: #ebf5fb; }
 }
 
 .hide { display: none; }
+/* Progress Bar Styles */
+.progress-container {
+    width: 70%;
+    height: 12px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%; 
+    background-color: #3498db;
+    transition: width 0.4s ease-in-out;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
