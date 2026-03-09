@@ -1,0 +1,85 @@
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const nextButton = document.getElementById('next-btn');
+const timerElement = document.getElementById('timer');
+
+let currentQuestionIndex = 0;
+let timeLeft = 60;
+let timer;
+
+// 1. Your Question Bank (Add real SSLC questions here)
+const questions = [
+    {
+        question: "ಆಮ್ಲಗಳು ಲಿಟ್ಮಸ್ ಕಾಗದವನ್ನು ಯಾವ ಬಣ್ಣಕ್ಕೆ ಬದಲಾಯಿಸುತ್ತವೆ?",
+        answers: [
+            { text: "ಕೆಂಪು ಬಣ್ಣದಿಂದ ನೀಲಿ", correct: false },
+            { text: "ನೀಲಿ ಬಣ್ಣದಿಂದ ಕೆಂಪು", correct: true },
+            { text: "ಹಳದಿ ಬಣ್ಣಕ್ಕೆ", correct: false },
+            { text: "ಬಣ್ಣ ಬದಲಾಗುವುದಿಲ್ಲ", correct: false }
+        ]
+    },
+    {
+        question: "ವೃತ್ತದ ವಿಸ್ತೀರ್ಣವನ್ನು ಕಂಡುಹಿಡಿಯುವ ಸೂತ್ರ ಯಾವುದು?",
+        answers: [
+            { text: "2πr", correct: false },
+            { text: "πr²", correct: true },
+            { text: "1/2 bh", correct: false },
+            { text: "l × b", correct: false }
+        ]
+    }
+];
+
+function startQuiz() {
+    currentQuestionIndex = 0;
+    showQuestion(questions[currentQuestionIndex]);
+    startTimer();
+}
+
+function startTimer() {
+    timeLeft = 60;
+    timer = setInterval(() => {
+        timeLeft--;
+        timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            alert("ಸಮಯ ಮುಗಿದಿದೆ! ಮುಂದಿನ ಪ್ರಶ್ನೆಗೆ ಹೋಗಿ.");
+        }
+    }, 1000);
+}
+
+function showQuestion(question) {
+    questionElement.innerText = question.question;
+    answerButtonsElement.innerHTML = '';
+    question.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        button.addEventListener('click', () => selectAnswer(answer, button));
+        answerButtonsElement.appendChild(button);
+    });
+}
+
+function selectAnswer(answer, button) {
+    if (answer.correct) {
+        button.classList.add('correct');
+    } else {
+        button.classList.add('wrong');
+    }
+    clearInterval(timer); // Stop timer once answered
+    nextButton.classList.remove('hide');
+}
+
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(questions[currentQuestionIndex]);
+        startTimer();
+        nextButton.classList.add('hide');
+    } else {
+        questionElement.innerText = "ಅಭಿನಂದನೆಗಳು! ನೀವು ರಸಪ್ರಶ್ನೆ ಮುಗಿಸಿದ್ದೀರಿ.";
+        answerButtonsElement.innerHTML = '';
+        nextButton.classList.add('hide');
+    }
+});
+
+startQuiz();

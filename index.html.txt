@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSLC Topper Quiz 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <div class="header">
+            <h1>SSLC ವಿಜ್ಞಾನ (Science) - MCQ</h1>
+            <div id="timer">ಸಮಯ: 60s</div>
+        </div>
+
+        <div id="quiz">
+            <h2 id="question">ಪ್ರಶ್ನೆ ಇಲ್ಲಿ ಮೂಡುತ್ತದೆ...</h2>
+            <div id="answer-buttons" class="btn-grid">
+                </div>
+        </div>
+
+        <div class="controls">
+            <button id="next-btn" class="next-btn hide">ಮುಂದಿನ ಪ್ರಶ್ನೆ (Next)</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
