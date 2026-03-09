@@ -4,12 +4,11 @@ const nextButton = document.getElementById('next-btn');
 const timerElement = document.getElementById('timer');
 
 let currentQuestionIndex = 0;
+let score = 0; // ಅಂಕಗಳನ್ನು ಉಳಿಸಲು
 let timeLeft = 60;
 let timer;
 
-// 1. Your Question Bank (Add real SSLC questions here)
 const questions = [
-    // --- Literature & Authors ---
     {
         question: "'ಶಬರಿ' ಪಾಠದ ಲೇಖಕರು ಯಾರು? (2023)",
         answers: [
@@ -55,7 +54,6 @@ const questions = [
             { text: "ಚೆನ್ನಬಸವ ಪುರಾಣ", correct: false }
         ]
     },
-    // --- Grammar (ವ್ಯಾಕರಣ) ---
     {
         question: "'ಲಗಾಮು' ಎಂಬುದು ಯಾವ ಭಾಷೆಯ ಪದ? (2022)",
         answers: [
@@ -309,7 +307,7 @@ const questions = [
         ]
     },
     {
-        question: "'ಗುಣ ಸಂಧಿ'ಗೆ ಒಂದು ಉದಾಹರಣೆ:",
+        question: "'ಗುಣ ಸಂಧಿ'ಕ್ಕೆ ಒಂದು ಉದಾಹರಣೆ:",
         answers: [
             { text: "ದೇವೇಶ್ವರ", correct: true },
             { text: "ವೈದ್ಯ", correct: false },
@@ -465,56 +463,91 @@ const questions = [
 
 function startQuiz() {
     currentQuestionIndex = 0;
-    showQuestion(questions[currentQuestionIndex]);
+    score = 0; // ಸ್ಕೋರ್ ರೀಸೆಟ್
+    nextButton.innerHTML = "ಮುಂದಿನ ಪ್ರಶ್ನೆ (Next)";
+    showQuestion();
+}
+
+function showQuestion() {
+    resetState();
+    let currentQuestion = questions[currentQuestionIndex];
+    questionElement.innerText = currentQuestion.question;
+
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        if (answer.correct) {
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener('click', selectAnswer);
+        answerButtonsElement.appendChild(button);
+    });
     startTimer();
+}
+
+function resetState() {
+    clearInterval(timer);
+    nextButton.classList.add('hide');
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    }
 }
 
 function startTimer() {
     timeLeft = 60;
+    timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
     timer = setInterval(() => {
         timeLeft--;
         timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            alert("ಸಮಯ ಮುಗಿದಿದೆ! ಮುಂದಿನ ಪ್ರಶ್ನೆಗೆ ಹೋಗಿ.");
+            handleNextButton(); // ಸಮಯ ಮುಗಿದರೆ ಮುಂದಿನ ಪ್ರಶ್ನೆಗೆ
         }
     }, 1000);
 }
 
-function showQuestion(question) {
-    questionElement.innerText = question.question;
-    answerButtonsElement.innerHTML = '';
-    question.answers.forEach(answer => {
-        const button = document.createElement('button');
-        button.innerText = answer.text;
-        button.classList.add('btn');
-        button.addEventListener('click', () => selectAnswer(answer, button));
-        answerButtonsElement.appendChild(button);
+function selectAnswer(e) {
+    const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+    if (isCorrect) {
+        selectedBtn.classList.add('correct');
+        score++;
+    } else {
+        selectedBtn.classList.add('wrong');
+    }
+    Array.from(answerButtonsElement.children).forEach(button => {
+        if (button.dataset.correct === "true") {
+            button.classList.add('correct');
+        }
+        button.disabled = true;
     });
+    clearInterval(timer);
+    nextButton.classList.remove('hide');
 }
 
-function selectAnswer(answer, button) {
-    if (answer.correct) {
-        button.classList.add('correct');
+function handleNextButton() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
     } else {
-        button.classList.add('wrong');
+        showScore();
     }
-    clearInterval(timer); // Stop timer once answered
+}
+
+function showScore() {
+    resetState();
+    questionElement.innerText = `ಅಭಿನಂದನೆಗಳು! ನಿಮ್ಮ ಅಂಕಗಳು: ${score} / ${questions.length}`;
+    nextButton.innerHTML = "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ (Restart)";
     nextButton.classList.remove('hide');
 }
 
 nextButton.addEventListener('click', () => {
-    currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
-        showQuestion(questions[currentQuestionIndex]);
-        startTimer();
-        nextButton.classList.add('hide');
+        handleNextButton();
     } else {
-        questionElement.innerText = "ಅಭಿನಂದನೆಗಳು! ನೀವು ರಸಪ್ರಶ್ನೆ ಮುಗಿಸಿದ್ದೀರಿ.";
-        answerButtonsElement.innerHTML = '';
-        nextButton.classList.add('hide');
+        startQuiz();
     }
 });
-
 
 startQuiz();
