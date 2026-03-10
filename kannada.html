@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSLC Kannada Quiz - All Tests</title>
+    <title>SSLC ಕನ್ನಡ ರಸಪ್ರಶ್ನೆ - All Tests</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="quiz-container">
         <div id="menu">
             <h1>SSLC ಕನ್ನಡ ರಸಪ್ರಶ್ನೆ (Quiz)</h1>
-            <p>ಯಾವ ಪರೀಕ್ಷೆಯನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಬಯಸುತ್ತೀರಿ?</p>
+            <p>ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಪರೀಕ್ಷೆಯನ್ನು ಆರಿಸಿ:</p>
             <div class="menu-grid">
-                <button class="btn menu-btn" onclick="loadTest('kannada1.js')">ಪರೀಕ್ಷೆ 1: ಸಾಹಿತ್ಯ (Literature)</button>
-                <button class="btn menu-btn" onclick="loadTest('kannada2.js')">ಪರೀಕ್ಷೆ 2: 2021 ಮಾದರಿ ಪತ್ರಿಕೆ</button>
-                <button class="btn menu-btn" onclick="loadTest('kannada3.js')">ಪರೀಕ್ಷೆ 3: 2025-26 ಹೊಸ ಮಾದರಿ ಪತ್ರಿಕೆ</button>
+                <button class="btn menu-btn" onclick="loadTest('kannada1.js')">
+                    <strong>ಪರೀಕ್ಷೆ 1</strong><br>
+                    <span>ಕವಿಗಳು ಮತ್ತು ಸಾಹಿತ್ಯ (Literature)</span>
+                </button>
+
+                <button class="btn menu-btn" onclick="loadTest('kannada2.js')" style="background-color: #27ae60;">
+                    <strong>ಪರೀಕ್ಷೆ 2</strong><br>
+                    <span>2021 ಮಾದರಿ ಪತ್ರಿಕೆ (MCQ)</span>
+                </button>
+
+                <button class="btn menu-btn" onclick="loadTest('kannada3.js')" style="background-color: #8e44ad;">
+                    <strong>ಪರೀಕ್ಷೆ 3</strong><br>
+                    <span>2025-26 ಹೊಸ ಮಾದರಿ ಪತ್ರಿಕೆ</span>
+                </button>
             </div>
         </div>
 
         <div id="quiz-box" class="hide">
             <div class="header">
-                <button onclick="location.reload()" class="back-btn">⬅ ಮೆನುಗೆ ಹಿಂತಿರುಗಿ</button>
+                <button onclick="location.reload()" class="back-btn">⬅ ಮೆನುಗೆ ಹಿಂತಿರುಗಿ (Back)</button>
                 <div class="progress-container"><div id="progress-bar"></div></div>
                 <div id="timer">ಸಮಯ: 30s</div>
             </div>
 
             <div id="quiz">
+                <h1 id="test-title" style="font-size: 1.1rem; color: #7f8c8d; margin-bottom: 10px;">ಕನ್ನಡ ಪರೀಕ್ಷೆ</h1>
                 <h2 id="question">ಪ್ರಶ್ನೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ...</h2>
                 <div id="answer-buttons" class="btn-grid"></div>
             </div>
@@ -37,13 +49,18 @@
     </div>
 
     <script>
-        // Logic to load the JS file dynamically
         function loadTest(fileName) {
-            // Hide menu, show quiz
+            // ಮೆನು ಮರೆಮಾಡಿ, ಕ್ವಿಜ್ ಬಾಕ್ಸ್ ತೋರಿಸಿ
             document.getElementById('menu').classList.add('hide');
             document.getElementById('quiz-box').classList.remove('hide');
 
-            // Create a script tag and inject it into the page
+            // ಆಯಾ ಪರೀಕ್ಷೆಯ ಶೀರ್ಷಿಕೆಯನ್ನು ನವೀಕರಿಸಿ
+            const title = document.getElementById('test-title');
+            if(fileName === 'kannada1.js') title.innerText = "ಪರೀಕ್ಷೆ 1";
+            if(fileName === 'kannada2.js') title.innerText = "ಪರೀಕ್ಷೆ 2";
+            if(fileName === 'kannada3.js') title.innerText = "ಪರೀಕ್ಷೆ 3";
+
+            // Script ಫೈಲ್ ಅನ್ನು ಡೈನಾಮಿಕ್ ಆಗಿ ಲೋಡ್ ಮಾಡಿ
             const script = document.createElement('script');
             script.src = fileName;
             document.body.appendChild(script);
