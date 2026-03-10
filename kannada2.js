@@ -4,6 +4,18 @@ document.onkeydown = (e) => {
     if (e.ctrlKey && [67, 86, 85, 73].includes(e.keyCode)) return false;
 };
 
+// UI Elements (Must match the IDs in your HTML)
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const nextButton = document.getElementById('next-btn');
+const timerElement = document.getElementById('timer');
+const progressBar = document.getElementById('progress-bar');
+
+let currentQuestionIndex = 0;
+let score = 0;
+let timeLeft = 30;
+let timer;
+
 const questions = [
     { question: "1. 'ಹಲಗಲಿ ಬೇಡರು' ಕವಿತೆಯು ಈ ಕಾವ್ಯ ಪ್ರಕಾರಕ್ಕೆ ಸೇರಿದೆ:", answers: [{ text: "ಭಾವಗೀತೆ", correct: false }, { text: "ವಚನ", correct: false }, { text: "ಲಾವಣಿ", correct: true }, { text: "ರಗಳೆ", correct: false }] },
     { question: "2. 'ಎದೆಗೆ ಬಿದ್ದ ಅಕ್ಷರ' ಈ ಗದ್ಯ ಭಾಗದ ಲೇಖಕರು:", answers: [{ text: "ಸಿದ್ದಲಿಂಗಯ್ಯ", correct: false }, { text: "ನಾಗೇಗೌಡ", correct: false }, { text: "ದೇವನೂರು ಮಹಾದೇವ", correct: true }, { text: "ಪೂರ್ಣಚಂದ್ರ ತೇಜಸ್ವಿ", correct: false }] },
@@ -37,4 +49,103 @@ const questions = [
     { question: "30. 'ಕೆರೆತೊರೆ' ಪದವು ಯಾವ ಸಮಾಸ?", answers: [{ text: "ದ್ವಂದ್ವ ಸಮಾಸ", correct: true }, { text: "ಗಮಕ ಸಮಾಸ", correct: false }, { text: "ಬಹುವ್ರೀಹಿ ಸಮಾಸ", correct: false }, { text: "ತತ್ಪುರುಷ ಸಮಾಸ", correct: false }] }
 ];
 
-// Use the same functions (startQuiz, showQuestion, selectAnswer, startTimer, showScore) from Test 1.
+function startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.innerHTML = "ಮುಂದಿನ ಪ್ರಶ್ನೆ (Next)";
+    showQuestion();
+}
+
+function showQuestion() {
+    resetState();
+    let currentQuestion = questions[currentQuestionIndex];
+    questionElement.innerText = currentQuestion.question;
+
+    // Progress Bar Update
+    const progress = (currentQuestionIndex / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        if (answer.correct) button.dataset.correct = answer.correct;
+        button.addEventListener('click', selectAnswer);
+        answerButtonsElement.appendChild(button);
+    });
+    startTimer();
+}
+
+function resetState() {
+    clearInterval(timer);
+    nextButton.classList.add('hide');
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    }
+}
+
+function startTimer() {
+    timeLeft = 30;
+    timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
+    timer = setInterval(() => {
+        timeLeft--;
+        timerElement.innerText = `ಸಮಯ: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            autoSelectCorrect();
+        }
+    }, 1000);
+}
+
+function autoSelectCorrect() {
+    Array.from(answerButtonsElement.children).forEach(button => {
+        if (button.dataset.correct === "true") button.classList.add('correct');
+        button.disabled = true;
+    });
+    nextButton.classList.remove('hide');
+}
+
+function selectAnswer(e) {
+    const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+    if (isCorrect) {
+        selectedBtn.classList.add('correct');
+        score++;
+    } else {
+        selectedBtn.classList.add('wrong');
+    }
+    Array.from(answerButtonsElement.children).forEach(button => {
+        if (button.dataset.correct === "true") button.classList.add('correct');
+        button.disabled = true;
+    });
+    clearInterval(timer);
+    nextButton.classList.remove('hide');
+}
+
+function showScore() {
+    resetState();
+    progressBar.style.width = `100%`;
+    questionElement.innerHTML = `
+        <div class="score-container">
+            <h2>ಪರೀಕ್ಷೆ ಮುಕ್ತಾಯಗೊಂಡಿದೆ!</h2>
+            <span class="score-number">${score} / ${questions.length}</span>
+            <p>ನಿಮ್ಮ ಸಾಧನೆಗೆ ಅಭಿನಂದನೆಗಳು!</p>
+        </div>
+    `;
+    nextButton.innerHTML = "ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ (Restart)";
+    nextButton.classList.remove('hide');
+}
+
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else if (currentQuestionIndex === questions.length) {
+        showScore();
+    } else {
+        startQuiz();
+    }
+});
+
+// Important: Run the start function immediately when script loads
+startQuiz();
