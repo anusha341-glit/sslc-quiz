@@ -1,1 +1,83 @@
 
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSLC ವಿಜ್ಞಾನ ರಸಪ್ರಶ್ನೆ - All Tests</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="menu">
+            <h1 style="color: #2980b9;">SSLC ವಿಜ್ಞಾನ ರಸಪ್ರಶ್ನೆ (Science Quiz)</h1>
+            <p>ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಪರೀಕ್ಷೆಯನ್ನು ಆರಿಸಿ:</p>
+            <div class="menu-grid">
+                <button class="btn menu-btn" onclick="loadTest('science1.js')" style="background-color: #3498db;">
+                    <strong>ಪರೀಕ್ಷೆ 1</strong>
+                </button>
+
+                <button class="btn menu-btn" onclick="loadTest('science2.js')" style="background-color: #2ecc71;">
+                    <strong>ಪರೀಕ್ಷೆ 2</strong>
+                </button>
+
+                <button class="btn menu-btn" onclick="loadTest('science3.js')" style="background-color: #f1c40f; color: #333;">
+                    <strong>ಪರೀಕ್ಷೆ 3</strong>
+                </button>
+
+                <button class="btn menu-btn" onclick="loadTest('science4.js')" style="background-color: #e67e22;">
+                    <strong>ಪರೀಕ್ಷೆ 4</strong>
+                </button>
+            </div>
+            
+            <button onclick="localStorage.clear(); location.reload();" style="margin-top:30px; background:#95a5a6; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer; font-size: 0.8rem;">
+                ಹಳೆಯ ಫಲಿತಾಂಶಗಳನ್ನು ಅಳಿಸಿ (Reset All Scores)
+            </button>
+        </div>
+
+        <div id="quiz-box" class="hide">
+            <div class="header">
+                <button onclick="location.reload()" class="back-btn">⬅ ಮೆನುಗೆ ಹಿಂತಿರುಗಿ</button>
+                <div class="progress-container"><div id="progress-bar"></div></div>
+                <div id="timer">ಸಮಯ: 30s</div>
+            </div>
+
+            <div id="quiz">
+                <h1 id="test-title" style="font-size: 1.2rem; color: #34495e; margin-bottom: 10px;">ವಿಜ್ಞಾನ ಪರೀಕ್ಷೆ</h1>
+                <h2 id="question">ಪ್ರಶ್ನೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ...</h2>
+                <div id="answer-buttons" class="btn-grid"></div>
+            </div>
+
+            <div class="controls">
+                <button id="next-btn" class="next-btn hide">ಮುಂದಿನ ಪ್ರಶ್ನೆ (Next)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadTest(fileName) {
+            document.getElementById('menu').classList.add('hide');
+            document.getElementById('quiz-box').classList.remove('hide');
+
+            const title = document.getElementById('test-title');
+            if(fileName === 'science1.js') title.innerText = "ವಿಜ್ಞಾನ ಪರೀಕ್ಷೆ 1 (Model Paper 1)";
+            if(fileName === 'science2.js') title.innerText = "ವಿಜ್ಞಾನ ಪರೀಕ್ಷೆ 2 (Model Paper 2)";
+            if(fileName === 'science3.js') title.innerText = "ವಿಜ್ಞಾನ ಪರೀಕ್ಷೆ 3 (Model Paper 3)";
+            if(fileName === 'science4.js') title.innerText = "ವಿಜ್ಞಾನ ಪರೀಕ್ಷೆ 4 (Model Paper 4)";
+
+            const oldScript = document.getElementById('dynamic-test-script');
+            if (oldScript) oldScript.remove();
+
+            const script = document.createElement('script');
+            script.src = fileName;
+            script.id = 'dynamic-test-script';
+            
+            script.onerror = function() {
+                alert("ದೋಷ: " + fileName + " ಫೈಲ್ ಸಿಗುತ್ತಿಲ್ಲ! ಸರಿಯಾದ ಹೆಸರಿನಿಂದ ಸೇವ್ ಆಗಿದೆಯೇ ಎಂದು ನೋಡಿ.");
+            };
+
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>
