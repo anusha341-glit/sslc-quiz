@@ -1,4 +1,4 @@
-/* General Layout */
+/* --- General Layout --- */
 body {
     background-color: #f0f2f5;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -9,10 +9,10 @@ body {
     margin: 0;
 
     /* --- ANTI-COPY START --- */
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none;     /* IE 10+ */
-    user-select: none;         /* Prevent text selection */
-    -webkit-touch-callout: none; /* Prevent long-press on mobile */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
     /* --- ANTI-COPY END --- */
 }
 
@@ -23,14 +23,57 @@ body {
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    min-height: 400px;
 }
 
-/* Header & Progress Bar */
+/* --- Menu System Styling --- */
+#menu {
+    text-align: center;
+    padding: 10px;
+}
+
+.menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.menu-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.menu-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* --- Header & Progress --- */
 .header {
     display: flex;
-    flex-direction: column; /* Stack progress bar and timer */
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.9rem;
+    width: fit-content;
 }
 
 .progress-container {
@@ -55,66 +98,78 @@ body {
     text-align: right;
 }
 
-/* Typography */
+/* --- Typography --- */
 h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #2c3e50;
     text-align: center;
-    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 #question {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     margin-bottom: 20px;
+    color: #34495e;
+    line-height: 1.5;
 }
 
-/* Buttons and Grid */
+/* --- Quiz Buttons Grid --- */
 .btn-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Single column for mobile */
+    grid-template-columns: 1fr;
     gap: 12px;
 }
 
 @media (min-width: 480px) {
     .btn-grid {
-        grid-template-columns: 1fr 1fr; /* Two columns for tablet/PC */
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-button {
-    padding: 12px 15px;
+.btn {
+    padding: 15px;
     border: 2px solid #3498db;
     background-color: #fff;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-button:hover:not([disabled]) {
+.btn:hover:not([disabled]) {
     background-color: #ebf5fb;
     transform: translateY(-2px);
 }
 
-button:disabled {
-    cursor: not-allowed;
-}
-
-/* Feedback Colors */
+/* --- Feedback Animations --- */
 .correct {
     background-color: #2ecc71 !important;
     color: white !important;
     border-color: #27ae60 !important;
+    animation: pop 0.3s ease-in-out;
 }
 
 .wrong {
     background-color: #e74c3c !important;
     color: white !important;
     border-color: #c0392b !important;
+    animation: shake 0.3s ease-in-out;
 }
 
-/* Controls */
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* --- Controls --- */
 .next-btn {
     background-color: #2c3e50;
     color: white;
@@ -122,7 +177,10 @@ button:disabled {
     margin-top: 25px;
     padding: 15px;
     border: none;
+    border-radius: 8px;
     font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .next-btn:hover {
@@ -131,4 +189,18 @@ button:disabled {
 
 .hide {
     display: none;
+}
+
+/* --- Result Screen --- */
+.score-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.score-number {
+    font-size: 5rem;
+    color: #3498db;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
 }
